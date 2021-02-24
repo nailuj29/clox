@@ -10,11 +10,11 @@ void* reallocate(void* pointer, size_t oldSize, size_t newSize) {
     return NULL;
   }
 
-  printf("%X %d %d\n", pointer, oldSize, newSize);
+  printf("%p %zu %zu\n", pointer, oldSize, newSize);
 
   void* result = realloc(pointer, newSize);
   if (result == NULL) {
-      printf("OOM");
+      perror("realloc");
       exit(1);
   }
   return result;
